@@ -51,22 +51,24 @@ print("\nCorrelation Matrix:")
 print(df.corr())
 
 # Graph 1: Arrival Delay Distribution
+plt.figure(figsize=(8, 5))
 plt.hist(df['ARR_DELAY'], bins=50)
 plt.title('Arrival Delay Distribution')
 plt.xlabel('Arrival Delay (Minutes)')
 plt.ylabel('Frequency')
 plt.tight_layout()
 plt.savefig('arrival_delay_distribution.png')
-plt.show()
+plt.close()
 
 # Graph 2: Departure vs Arrival Delay
+plt.figure(figsize=(8, 5))
 plt.scatter(df['DEP_DELAY'], df['ARR_DELAY'], alpha=0.3)
 plt.title('Departure Delay vs Arrival Delay')
 plt.xlabel('Departure Delay (Minutes)')
 plt.ylabel('Arrival Delay (Minutes)')
 plt.tight_layout()
 plt.savefig('departure_vs_arrival.png')
-plt.show()
+plt.close()
 
 # PREDICTIVE ANALYTICS
 
@@ -91,13 +93,14 @@ print(model.summary())
 df['PREDICTED_DELAY'] = model.predict(X)
 
 # Graph 3: Actual vs Predicted Delays
+plt.figure(figsize=(8, 5))
 plt.scatter(df['ARR_DELAY'], df['PREDICTED_DELAY'], alpha=0.3)
 plt.title('Actual vs Predicted Arrival Delays')
-plt.xlabel('Actual Arrival Delay')
-plt.ylabel('Predicted Arrival Delay')
+plt.xlabel('Actual Arrival Delay (Minutes)')
+plt.ylabel('Predicted Arrival Delay (Minutes)')
 plt.tight_layout()
 plt.savefig('actual_vs_predicted.png')
-plt.show()
+plt.close()
 
 # Print significant predictors
 print("\nSignificant Predictors (p < 0.05):")
